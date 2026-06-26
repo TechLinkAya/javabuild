@@ -7,6 +7,16 @@
     <display-name>WandaApp Core Banking Gateway</display-name>
 
     <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.goshen.wandaapp.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>BalanceServlet</servlet-name>
         <servlet-class>com.goshen.wandaapp.BalanceServlet</servlet-class>
     </servlet>
@@ -17,6 +27,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>dashboard</welcome-file>
+        <welcome-file>login</welcome-file>
     </welcome-file-list>
+
 </web-app>

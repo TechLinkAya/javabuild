@@ -16,7 +16,7 @@ public class BalanceServlet extends HttpServlet {
         
         // Simulating the bank account balance and mobile money data payload
         Map<String, Object> accountData = new HashMap<>();
-        accountData.put("clientName", "Jane Doe");
+        accountData.put("clientName", "Ayafor Kayla");
         accountData.put("accountNumber", "110293847562");
         accountData.put("bankBalance", "450,000 XAF");
         accountData.put("momoBalance", "28,500 XAF");

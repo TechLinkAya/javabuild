@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.net.InetAddress" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,12 @@
         .value { color: #2d3748; }
         .balance { font-size: 18px; font-weight: bold; color: #2b6cb0; }
         .footer { text-align: center; margin-top: 25px; font-size: 12px; color: #a0aec0; }
+        
+        /* New section styles matching your screenshot */
+        .server-info-container { max-width: 500px; margin: 20px auto 0 auto; padding: 0 25px; font-family: Times, "Times New Roman", serif; }
+        .server-info-title { font-size: 22px; font-weight: bold; color: #000; margin-bottom: 20px; }
+        .server-info-details { font-size: 18px; color: #000; line-height: 1.6; }
+        .server-info-divider { border: 0; border-top: 1px solid #ccc; margin-top: 15px; }
     </style>
 </head>
 <body>
@@ -54,6 +61,31 @@
     <div class="footer">
         Powered by Goshen Tech Frameworks Engine v1.0
     </div>
+</div>
+
+<%-- Backend Logic to fetch Server IP and Hostname --%>
+<%
+    String hostName = "Unknown";
+    String ipAddress = "Unknown";
+    try {
+        InetAddress localhost = InetAddress.getLocalHost();
+        hostName = localhost.getHostName();
+        ipAddress = localhost.getHostAddress();
+    } catch (Exception e) {
+        // Fallback if network resolution fails
+        hostName = request.getServerName();
+        ipAddress = request.getLocalAddr();
+    }
+%>
+
+<%-- New Server Side IP Address Section --%>
+<div class="server-info-container">
+    <div class="server-info-title">Server Side IP Address</div>
+    <div class="server-info-details">
+        Server Host Name :: <%= hostName %><br>
+        Server IP Address :: <%= ipAddress %>
+    </div>
+    <hr class="server-info-divider">
 </div>
 
 </body>

@@ -33,12 +33,44 @@
         </dependency>
     </dependencies>
 
+    <!-- Where Maven will DOWNLOAD dependencies from -->
+    <repositories>
+        <repository>
+            <id>wandapay-repo</id>
+            <name>Wandapay Repository</name>
+            <url>http://54.159.5.191:8081/repository/wandapay/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>wandapay-release-repo</id>
+            <name>Wandapay Release Repository</name>
+            <url>http://54.159.5.191:8081/repository/wandapay-release/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <!-- Where Maven will UPLOAD (deploy) your built files -->
     <distributionManagement>
         <repository>
-            <id>internal.repo</id>
-            <name>Temporary Local Repository</name>
-            <url>file://${project.build.directory}/mvn-repo</url>
+            <id>wandapay-nexus-releases</id>
+            <name>Wandapay Nexus Releases</name>
+            <url>http://54.159.5.191:8081/repository/wandapay-release/</url>
         </repository>
+        <snapshotRepository>
+            <id>wandapay-nexus-snapshots</id>
+            <name>Wandapay Nexus Snapshots</name>
+            <url>http://54.159.5.191:8081/repository/wandapay/</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <build>
